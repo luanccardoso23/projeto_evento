@@ -14,3 +14,7 @@ $c1 = new Carro("Chevrolet", "Ônix");
 $c1->ligar();
 echo "<br>";
 $c1->ligarParaBrisa();
+
+$m1 = new Moto("BMW", "R1250");
+$m1->ligarPiscaAlerta();
+echo "<br>";

@@ -6,6 +6,8 @@ class Veiculo{
  private $ligado = false;//para informar se o veiculo está ligado
  protected $nomeClasse;// somente as classes filhas poderão acessar esse atributo
 
+  
+
  public function __construct($marca, $modelo){
 
     $this->marca = $marca;
@@ -46,4 +48,13 @@ class Carro extends Veiculo{
         echo "{$this->nomeClasse} ligou o para-brisa <br>";
     }
 
-}
+   
+    }
+    class Moto extends Veiculo{
+        public function ligarPiscaAlerta(){
+        echo "A {$this->nomeClasse} ligou o pisca-alerta";
+
+            }
+        }
+
+
