@@ -10,11 +10,29 @@ class Evento{
     public function inicio($campos, $arquivo){
         // Verificar se os campos estão em branco
         if($this->recebeDados($campos)){
-            $this->mensagem = [
-                "status" => true,
-                "msg" => "Dados preenchidos com sucesso"
-            ];
-            print_r($this->mensagem);
+           if($this->validaData($campos["dataEvento"])){
+               if($this->recebeArquivo($arquivo)){
+                   $this->mensagem = [
+                       "status"=> true,
+                       "msg" => "Evento cadastrado com sucesso"
+                   ];
+
+               }
+               else{
+                $this->mensagem = [
+                    "status" => false,
+                    "msg" => "Você precisa enviar uma imagem com formato jpg pu png."
+
+                ];
+               }
+
+           }
+           else{
+                $this->mensagem = [
+                    "status" => false,
+                    "msg" => " Data do evento é anterior ao dia atual"
+                ];
+           }
 
         }
         else{
@@ -22,9 +40,10 @@ class Evento{
                 "status" => false,
                 "msg" => "Os campos não podem ficar em branco"
             ];
-            print_r($this->mensagem);
+           
 
         }
+        return $this->mensagem;
 
     }
 
@@ -33,9 +52,9 @@ class Evento{
     $dataEvento = new DateTime($data);
     $dataAtual = new DateTime("now");
 
-    echo $dataEvento->format("d/m/Y");
-    echo "<br> A data de hoje é: ";
-    print_r($dataAtual);
+    //echo $dataEvento->format("d/m/Y");
+    //echo "<br> A data de hoje é: ";
+    //print_r($dataAtual);
 
 
     if($dataEvento >= $dataAtual){
@@ -124,8 +143,10 @@ public function recebeArquivo($banner){
 }
 
 // ESTAMOS INSTANCIANDO UM OBJETO
+/*
 $meuEvento = new Evento();
 
 print_r($meuEvento);
 echo "<hr>";
 $meuEvento->inicio($_POST, $_FILES);
+*/
