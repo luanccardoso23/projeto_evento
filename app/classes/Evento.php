@@ -142,6 +142,11 @@ public function recebeArquivo($banner){
 
 }
 
+public function __get($atributo){
+    return $this->$atributo;
+
+}
+
 
 
 }
