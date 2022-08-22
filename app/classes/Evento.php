@@ -129,6 +129,8 @@ public function recebeArquivo($banner){
          $caminhoFinal = $pasta.$this->banner["name"];
          move_uploaded_file($this->banner["tmp_name"], $caminhoFinal);
          //echo "<img src='{$caminhoFinal}' width='200px' height='200px'>";
+         
+         $this->banner = $caminhoFinal;
          return true;
 
      }

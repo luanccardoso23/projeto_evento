@@ -12,8 +12,11 @@ if($_SESSION["mensagem"]["status"]){
 
 }
 
-header("Location:../view/CadastroView.php");// REDIRECIONANDO O USUÁRIO PARA A PÁGINA CadastroView.php
-die();
+//header("Location:../view/CadastroView.php");// REDIRECIONANDO O USUÁRIO PARA A PÁGINA CadastroView.php
+//die();
+echo"<pre>";
+print_r($meuEventoDAO->consultar());
+echo"</pre>";
 
 /*
 print_r($_POST);

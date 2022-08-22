@@ -12,7 +12,7 @@ class EventoDAO{
        $preparacao = Conexao::getConexao()->prepare($sql);
 
        $preparacao->bindValue(":nome",$evento->nomeEvento);
-       $preparacao->bindValue(":dataEvento,$evento->dataEvento");
+       $preparacao->bindValue(":dataEvento",$evento->dataEvento);
        $preparacao->bindValue(":foto",$evento->banner);
 
        $preparacao->execute();
@@ -27,6 +27,19 @@ class EventoDAO{
 
    }
    public function consultar(){
+       $sql =  "SELECT * FROM {$this->tabela}";
+       $preparacao = Conexao::getConexao()->prepare($sql);
+
+       $preparacao->execute();
+
+       if($preparacao->rowCount() > 0){
+           return $preparacao->fetchALL(PDO::FETCH_ASSOC);// O METODO fetchALL RETORNA TODOS OS REGISTROS DO BANCO DE DADOS E O VALOR PDO::FETCH_ASSOC, FAZ A ASSOCIAÇÃO DO NOME DOS CAMPOS DA TABELA COMOS INDICES DO VETOR.
+
+       }
+       else{
+           return false;
+
+       }
 
    }
    public function atualizar(){
