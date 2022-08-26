@@ -112,8 +112,11 @@ public function recebeArquivo($banner){
      $infoArquivo = pathinfo($this->banner["name"]);
     /*
      echo "<br>";
+     echo "<pre>";
      print_r($infoArquivo);
+     echo "</pre>";
      */
+     
      if($infoArquivo["extension"] == "jpg" || $infoArquivo["extension"] == "png"){
          //echo "<br> formato de arquivo aceito";
         
@@ -125,8 +128,14 @@ public function recebeArquivo($banner){
 
         }
 
+        // RENOMEANDO O ARQUIVO
+        $novoNome = new DateTime();
+        //echo "<hr>".$novoNome->getTimestamp();
+        $nomeFinal = $novoNome->getTimestamp().".".$infoArquivo["extension"];
+        //echo "<hr>".$nomeFinal;
 
-         $caminhoFinal = $pasta.$this->banner["name"];
+
+         $caminhoFinal = $pasta.$nomeFinal;
          move_uploaded_file($this->banner["tmp_name"], $caminhoFinal);
          //echo "<img src='{$caminhoFinal}' width='200px' height='200px'>";
          
@@ -159,5 +168,5 @@ $meuEvento = new Evento();
 
 print_r($meuEvento);
 echo "<hr>";
-$meuEvento->inicio($_POST, $_FILES);
+$meuEvento->recebeArquivo($_FILES["banner"]);
 */

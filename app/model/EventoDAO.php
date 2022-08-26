@@ -26,14 +26,27 @@ class EventoDAO{
        }
 
    }
-   public function consultar(){
+   public function consultar($dataBr = false){
        $sql =  "SELECT * FROM {$this->tabela}";
        $preparacao = Conexao::getConexao()->prepare($sql);
 
        $preparacao->execute();
 
        if($preparacao->rowCount() > 0){
-           return $preparacao->fetchALL(PDO::FETCH_ASSOC);// O METODO fetchALL RETORNA TODOS OS REGISTROS DO BANCO DE DADOS E O VALOR PDO::FETCH_ASSOC, FAZ A ASSOCIAÇÃO DO NOME DOS CAMPOS DA TABELA COMOS INDICES DO VETOR.
+           $resultado = $preparacao->fetchALL(PDO::FETCH_ASSOC);// O METODO fetchALL RETORNA TODOS OS REGISTROS DO BANCO DE DADOS E O VALOR PDO::FETCH_ASSOC, FAZ A ASSOCIAÇÃO DO NOME DOS CAMPOS DA TABELA COMOS INDICES DO VETOR.
+            if($dataBr){
+
+            
+          
+           foreach($resultado as $indice => $itens){
+               $data = new DateTime($itens["data_evento"]);
+               $resultado[$indice]["data_evento"] = $data->format("d/m/Y");
+
+
+           }
+        }
+        return $resultado;
+        
 
        }
        else{
