@@ -62,6 +62,7 @@
 
             </div>
 
+            <input type="hidden" name="cadastrar">
             <button type="submit" class="btn btn-primary my-3 col-12">Cadastrar</button>
 
         </section>

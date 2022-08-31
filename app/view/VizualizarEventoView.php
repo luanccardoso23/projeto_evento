@@ -32,14 +32,15 @@ $meuEventoDAO = new EventoDAO();
       </div>
 
       <div class="card-footer">
-         <form action="" method="POST" class="d-flex justify-content-around">
+         <form action="AtualizarEventoView.php" method="POST" class="d-flex justify-content-around">
 
           <button type="submit" class="btn btn-info col-5 d-flex justify-content-center align-items-center">
           Editar <span class="material-symbols-outlined ms-2">edit</span>
           </button>
+         
           <input type="hidden" name="id_evento" value="<?=$elemento['id_evento']?>">
 
-          <button type="submit" class="btn btn-danger col-5 d-flex justify-content-center align-items-center">
+          <button type="button" class="btn btn-danger col-5 d-flex justify-content-center align-items-center">
           Excluir <span class="material-symbols-outlined ms-2">delete</span>
           </button>
           
