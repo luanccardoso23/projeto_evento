@@ -4,6 +4,8 @@ require_once("../model/EventoDAO.php");
 
 $meuEventoDAO = new EventoDAO();
 
+unset($_SESSION["id_evento"]);
+
 
 
 ?>
