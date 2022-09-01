@@ -29,6 +29,13 @@ if(isset($_POST["atualizar"])){
    
 
 }
+if(isset($_POST["excluir"])){
+    //echo "O id para excluir é {$_POST['excluir']}";
+    $meuEventoDAO->deletar($_POST['excluir']);
+    header("Location:../view/VisualizarEventoView.php");
+    die();
+
+}
 
 /*
 echo"<pre>";
